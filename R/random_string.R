@@ -18,6 +18,6 @@ random_string <- function(prefix = "") {
   checkmate::assert_string(prefix)
   
   paste(prefix,
-        sample(c(letters, LETTERS, 0:9), round(runif(1, 8, 12))), 
+        sample(c(letters, LETTERS, 0:9), round(stats::runif(1, 8, 12))), 
         collapse = "")
 }
