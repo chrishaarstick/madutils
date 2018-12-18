@@ -8,4 +8,4 @@ R package with general utility functions useful across packages and projects.
   + __execute__: execute pipeline method for executing pipeline expr and saving output
   + __flow__: flow pipeline method for executing pipelien expr only
 
-[![Build Status](https://travis-ci.org/chrishaarstick/madstork.svg?branch=master)](https://travis-ci.org/chrishaarstick/madstork)
+[![Build Status](https://travis-ci.org/chrishaarstick/madutils.svg?branch=master)](https://travis-ci.org/chrishaarstick/madutils)
