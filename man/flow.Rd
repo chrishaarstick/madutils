@@ -4,13 +4,14 @@
 \alias{flow}
 \title{Pipeline Flow function}
 \usage{
-flow(x, pipe)
+flow(x, pipe, ...)
 }
 \arguments{
-\item{x}{input object to apply pipeline expression on. Can either be
-data.frame, spark dataframe or modeler object}
+\item{x}{input object to apply pipeline expression on.}
 
 \item{pipe}{pipeline object}
+
+\item{...}{additional arguments to pass to pipeline expression}
 }
 \value{
 data output resulting from pipeline execution
