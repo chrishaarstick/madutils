@@ -13,8 +13,10 @@
 #' @export
 #' @return pipeline object with expression stored
 #' 
-#' @example 
-#' pipeline(expr = identity)
+#' @examples 
+#'  
+#' # basic pipeline
+#' pipeline()
 pipeline <- function(expr = identity,
                      desc = "",
                      uid = random_string("pipe")) {
@@ -61,6 +63,7 @@ print.pipeline <- function(pipe, ...) {
 #'
 #' @param x input object to apply pipeline expression on. 
 #' @param pipe pipeline object
+#' @param ... additional arguments to pass to pipeline expression
 #'
 #' @export
 #' @return updated pipeline object with output
@@ -68,17 +71,17 @@ print.pipeline <- function(pipe, ...) {
 #'
 #' pipe <- pipeline(expr = function(e) mean(e$mpg))
 #' execute(mtcars, pipe)
-execute <- function(x, pipe){
+execute <- function(x, pipe, ...){
   UseMethod("execute")
 }
 
 
 #' @rdname execute
 #' @export
-execute.data.frame <- function(x, pipe){
+execute.data.frame <- function(x, pipe, ...){
   checkmate::assert_class(pipe, "pipeline")
   a1 <- Sys.time()
-  pipe$output <- pipe$expr(x)
+  pipe$output <- pipe$expr(x, ...)
   a2 <- Sys.time()
   pipe$runtime <- as.numeric(a2 - a1)
   pipe
@@ -88,7 +91,7 @@ execute.data.frame <- function(x, pipe){
 
 #' @rdname execute
 #' @export
-execute.NULL <- function(x, pipe){
+execute.NULL <- function(x, pipe, ...){
   checkmate::assert_class(pipe, "pipeline")
   a1 <- Sys.time()
   pipe$output <- NULL
@@ -104,8 +107,7 @@ execute.NULL <- function(x, pipe){
 #' Flow function executes the pipeline expression on the input and returns the
 #' data output only
 #'
-#' @param x input object to apply pipeline expression on. 
-#' @param pipe pipeline object
+#' @inheritParams execute
 #'
 #' @export
 #' @return data output resulting from pipeline execution
@@ -113,7 +115,7 @@ execute.NULL <- function(x, pipe){
 #'
 #' pipe <- pipeline(expr = function(e) mean(e$mpg))
 #' flow(mtcars, pipe)
-flow <- function(x, pipe){
+flow <- function(x, pipe, ...){
   checkmate::assert_class(pipe, "pipeline")
-  pipe$expr(x)
+  pipe$expr(x, ...)
 }

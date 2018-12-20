@@ -20,3 +20,8 @@ pipeline object with expression stored
 Creates a pipeline object to save data transformation logic. The expression
 is either a named function or user defined function
 }
+\examples{
+ 
+# basic pipeline
+pipeline()
+}

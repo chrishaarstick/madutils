@@ -6,17 +6,18 @@
 \alias{execute.NULL}
 \title{Pipeline Execute function}
 \usage{
-execute(x, pipe)
+execute(x, pipe, ...)
 
-\method{execute}{data.frame}(x, pipe)
+\method{execute}{data.frame}(x, pipe, ...)
 
-\method{execute}{NULL}(x, pipe)
+\method{execute}{NULL}(x, pipe, ...)
 }
 \arguments{
-\item{x}{input object to apply pipeline expression on. Can either be
-data.frame, spark dataframe or modeler object}
+\item{x}{input object to apply pipeline expression on.}
 
 \item{pipe}{pipeline object}
+
+\item{...}{additional arguments to pass to pipeline expression}
 }
 \value{
 updated pipeline object with output
