@@ -13,8 +13,10 @@
 #' @export
 #' @return pipeline object with expression stored
 #' 
-#' @example 
-#' pipeline(expr = identity)
+#' @examples 
+#'  
+#' # basic pipeline
+#' pipeline()
 pipeline <- function(expr = identity,
                      desc = "",
                      uid = random_string("pipe")) {
